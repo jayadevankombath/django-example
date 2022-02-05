@@ -1,0 +1,9 @@
+#Django
+Django==4.0.2
+
+#Database
+psycopg2==2.9.3
+
+#Scrap
+requests==2.27.1
+beautifulsoup4==4.10.0

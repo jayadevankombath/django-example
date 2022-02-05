@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Demo
+        </title>
+    </head>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-primary justify-content-between">
+        <a class="navbar-brand" style="color: #ffffff;font-weight: bold;">Lorem ipsum</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+        <div class="container-fluid">
+            <div class="row">
+                {% for coupon in coupons %}
+                <div class="col col-sm-2 col-md-3">
+                    <div class="card" style="height: 250px;margin-top: 10px;">
+                        <h5 class="card-header text-right">
+                            {{ coupon.coupon_code }}
+                        </h5>
+                        <div class="card-body">
+                            {% if coupon.expiry_date %}
+                            <p class="card-title text-muted">Expires {{ coupon.expiry_date|date:"D d M Y" }}</p>
+                            {% else %}
+                            {% endif %}
+
+                            {% if coupon.offer_value %}
+                            <h6 class="card-subtitle mb-2 text-muted">{{ coupon.offer_value|floatformat }} OFF </h6>
+                            {% else %}
+                            {% endif %}
+                            <p class="card-text">{{ coupon.coupon_description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>  
+        </div>       
+    </body>
+</html>
